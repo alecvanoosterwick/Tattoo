@@ -4,11 +4,4 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="ViewModels\Admin\" />
-    <Folder Include="ViewModels\Artiest\" />
-    <Folder Include="ViewModels\Tattoo\" />
-    <Folder Include="ViewModels\Shop\" />
-  </ItemGroup>
-
 </Project>

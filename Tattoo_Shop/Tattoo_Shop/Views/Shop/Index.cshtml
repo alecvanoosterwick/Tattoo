@@ -1,5 +1,50 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Tattoo_Shop.ViewModels.ProductListViewModel
 @{
+    ViewData["Title"] = "Shop Page";
 }
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+<form asp-controller="Shop" asp-action="Search" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Zoek op product:
+            <input asp-for="ProductSearch" />
+            <input type="submit" value="Zoeken" class="btn btn-default" />
+            <a asp-controller="Shop" asp-action="Index">Terug naar de volledige lijst</a>
+        </p>
+    </div>
+</form>
+<table>
+    <thead>
+        <tr>
+            <th class="col-md-4">
+                @Html.DisplayFor(model => model.Products[0].ProductId)
+            </th>
+            <th class="col-md-4">
+                @Html.DisplayFor(model => model.Products[0].Naam)
+            </th>
+            <th class="col-md-4">
+                @Html.DisplayFor(model => model.Products[0].Prijs)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td class="col-md-4">
+                    @item.ProductId
+                </td>
+                <td class="col-md-4">
+                    @item.Naam
+                </td>
+                <td class="col-md-4">
+                    @item.Prijs
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

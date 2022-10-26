@@ -15,6 +15,6 @@ namespace Tattoo_Shop.Models
 
         public string Foto { get; set; }
 
-        public List<Artist> Artiesten { get; set; }
+        public List<Artiest> Artiesten { get; set; }
     }
 }

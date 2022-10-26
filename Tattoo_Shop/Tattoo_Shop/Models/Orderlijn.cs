@@ -5,8 +5,11 @@ using System.Threading.Tasks;
 
 namespace Tattoo_Shop.Models
 {
-    public class Orderlijn
+    public class OrderLijn
     {
-        public List<Shop> Shop { get; set; }
+        public int OrderLijnId { get; set; }
+        public List<Product> Products { get; set; }
+        public List<Order> Orders { get; set; }
+        public string quantity { get; set; }
     }
 }
