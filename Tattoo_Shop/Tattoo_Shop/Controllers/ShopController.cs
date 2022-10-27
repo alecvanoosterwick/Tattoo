@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Tattoo_Shop.Data;
 using Tattoo_Shop.Models;
 using Tattoo_Shop.ViewModels;
 
@@ -11,31 +12,51 @@ namespace Tattoo_Shop.Controllers
     public class ShopController : Controller
     {
         public List<Product> products;
+        private readonly TattooContext _context;
 
-        public ShopController()
+        public ShopController(TattooContext context)
         {
-            products = new List<Product>();
-            products.Add(new Product() { Naam = "Roze Inkt", ProductId = 1, Prijs = 29, Descriptie = "Roze inkt die gemaakt is voor huid.", Foto = "rozeInkt.jpg", });
-            products.Add(new Product() { Naam = "Blauw Inkt", ProductId = 2, Prijs = 29, Descriptie = "Blauw inkt die gemaakt is voor huid.", Foto = "blauwInkt.jpg" });
-            products.Add(new Product() { Naam = "Gele Inkt", ProductId = 3, Prijs = 29, Descriptie = "Gele inkt die gemaakt is voor huid.", Foto = "geleInkt.jpg" });
+            _context = context;
         }
         public IActionResult Index()
         {
             ProductListViewModel viewModel = new ProductListViewModel();
-            viewModel.Products = products;
+            viewModel.Products = _context.Products.ToList();
             return View(viewModel);
         }
         public IActionResult Search(ProductListViewModel viewModel)
         {
             if (!string.IsNullOrEmpty(viewModel.ProductSearch))
             {
-                viewModel.Products = products.Where(b => b.Naam.Contains(viewModel.ProductSearch)).ToList();
+                viewModel.Products = _context.Products.Where(p => p.Naam.Contains(viewModel.ProductSearch)).ToList();
             }
             else
             {
-                viewModel.Products = products;
+                viewModel.Products = _context.Products.ToList();
             }
             return View("Index", viewModel);
+        }
+        public IActionResult Details(int id)
+        {
+            Product product = _context.Products.Where(p => p.ProductId == id).FirstOrDefault();
+            if (product != null)
+            {
+                ProductDetailsViewmodel viewModel = new ProductDetailsViewmodel()
+                {
+                    Naam = product.Naam,
+                    Prijs = product.Prijs,
+                    Descriptie = product.Descriptie,
+                    Merk = product.Merk,
+                    Foto = product.Foto,
+                };
+                return View(viewModel);
+            }
+            else
+            {
+                ProductListViewModel viewModel = new ProductListViewModel();
+                viewModel.Products = _context.Products.ToList();
+                return View("", viewModel);
+            }
         }
     }
 }

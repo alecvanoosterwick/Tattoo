@@ -17,33 +17,26 @@
     </div>
 </form>
 <table>
-    <thead>
-        <tr>
-            <th class="col-md-4">
-                @Html.DisplayFor(model => model.Products[0].ProductId)
-            </th>
-            <th class="col-md-4">
-                @Html.DisplayFor(model => model.Products[0].Naam)
-            </th>
-            <th class="col-md-4">
-                @Html.DisplayFor(model => model.Products[0].Prijs)
-            </th>
-        </tr>
-    </thead>
     <tbody>
         @foreach (var item in Model.Products)
         {
-            <tr>
-                <td class="col-md-4">
-                    @item.ProductId
-                </td>
-                <td class="col-md-4">
-                    @item.Naam
-                </td>
-                <td class="col-md-4">
-                    @item.Prijs
-                </td>
-            </tr>
+        <tr>
+            <td class="col-md-4">
+                @item.Naam
+            </td>
+            <td class="col-md-4">
+                @item.Prijs
+            </td>
+            <td class="col-md-4">
+                <a asp-controller="Shop" asp-action="Details" asp-route-id="@item.ProductId">details</a>
+            </td>
+            <td class="col-md-4">
+                edit
+            </td>
+            <td class="col-md-4">
+                delete
+            </td>
+        </tr>
         }
     </tbody>
 
