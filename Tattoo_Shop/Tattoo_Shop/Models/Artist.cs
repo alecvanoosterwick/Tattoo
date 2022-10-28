@@ -20,6 +20,6 @@ namespace Tattoo_Shop.Models
         [Required]
         public string Foto { get; set; }
 
-        public ICollection<Tattoo> tattoos { get; set; }
+        public ICollection<Tattoo> Tattoos { get; set; }
     }
 }

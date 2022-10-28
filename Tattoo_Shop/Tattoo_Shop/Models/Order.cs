@@ -8,6 +8,6 @@ namespace Tattoo_Shop.Models
     public class Order
     {
         public int Id { get; set; }
-        public ICollection<OrderLijn> OrderLijnen { get; set; }
+        public ICollection<OrderLijn> Orderlijnen { get; set; }
     }
 }

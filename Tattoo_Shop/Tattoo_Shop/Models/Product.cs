@@ -14,7 +14,6 @@ namespace Tattoo_Shop.Models
         [Required]
         public string Naam { get; set; }
         [Required]
-        [Column(TypeName = "decimal(18,2)")]
         public Decimal? Prijs { get; set; }
         [Required]
         public string Foto { get; set; }
