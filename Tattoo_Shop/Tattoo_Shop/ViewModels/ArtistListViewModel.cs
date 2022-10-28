@@ -8,6 +8,6 @@ namespace Tattoo_Shop.ViewModels
 {
     public class ArtistListViewModel
     {
-        public List<Artist> Artists { get; set; }
+        public ICollection<Artist> Artists { get; set; }
     }
 }

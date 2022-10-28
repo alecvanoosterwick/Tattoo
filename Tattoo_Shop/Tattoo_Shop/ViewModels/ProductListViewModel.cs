@@ -9,6 +9,6 @@ namespace Tattoo_Shop.ViewModels
     public class ProductListViewModel
     {
         public string ProductSearch { get; set; }
-        public List<Product> Products { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }

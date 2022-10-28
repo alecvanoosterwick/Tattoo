@@ -8,18 +8,18 @@ namespace Tattoo_Shop.Models
 {
     public class Artist
     {
-        public int ArtistId { get; set; }
-
+        public int Id { get; set; }
         [Required]
         public string Voornaam { get; set; }
         [Required]
         public string Achternaam { get; set; }
-
+        [Required]
         public string Descriptie { get; set; }
-
         public string Specialiteiten { get; set; }
 
         [Required]
         public string Foto { get; set; }
+
+        public ICollection<Tattoo> tattoos { get; set; }
     }
 }

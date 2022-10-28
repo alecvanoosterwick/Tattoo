@@ -7,9 +7,11 @@ namespace Tattoo_Shop.Models
 {
     public class OrderLijn
     {
-        public int OrderLijnId { get; set; }
-        public List<Product> Products { get; set; }
-        public List<Order> Orders { get; set; }
-        public string quantity { get; set; }
+        public int Id { get; set; }
+        public int ProductId { get; set; }
+        public int OrderId { get; set; }
+        public Product Product { get; set; }
+        public Order Order { get; set; }
+        public string Quantity { get; set; }
     }
 }

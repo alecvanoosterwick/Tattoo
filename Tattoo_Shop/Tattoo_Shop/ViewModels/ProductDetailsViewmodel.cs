@@ -7,7 +7,7 @@ namespace Tattoo_Shop.ViewModels
 {
     public class ProductDetailsViewmodel
     {
-        public int ProductId { get; set; }
+        public int Id { get; set; }
         public string Naam { get; set; }
         public Decimal? Prijs { get; set; }
         public string Foto { get; set; }

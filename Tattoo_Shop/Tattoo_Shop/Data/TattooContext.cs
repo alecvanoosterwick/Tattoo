@@ -14,12 +14,14 @@ namespace Tattoo_Shop.Data
 
         }
         public DbSet<Product> Products { get; set; }
-        //public DbSet<Klant> Klants { get; set; } heb nog niet identity toegevoegd dus nog geen model klant
+        public DbSet<Artist> Artists { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Tattoo> Tattoos { get; set; }
+        public DbSet<Artist> Artiesten { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            //modelBuilder.Entity<Klant>().ToTable("klant");
-            modelBuilder.Entity<Product>().ToTable("Product").Property(p => p.Prijs).HasColumnType("decimal(18,2)");
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+            {
+                modelBuilder.Entity<Product>().ToTable("Product").Property(p => p.Prijs).HasColumnType("decimal(18,2)");
+            }
         }
-    }
 }

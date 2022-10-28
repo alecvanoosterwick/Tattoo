@@ -9,7 +9,7 @@ namespace Tattoo_Shop.Models
 {
     public class Product
     {
-        public int ProductId { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Naam { get; set; }
@@ -22,5 +22,7 @@ namespace Tattoo_Shop.Models
         public string Descriptie { get; set; }
 
         public string Merk { get; set; }
+
+        public ICollection<OrderLijn> Orderlijnen { get;set; }
     }
 }

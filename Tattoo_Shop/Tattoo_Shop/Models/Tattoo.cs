@@ -8,7 +8,7 @@ namespace Tattoo_Shop.Models
 {
     public class Tattoo
     {
-        public int TattooId { get; set; }
+        public int Id { get; set; }
 
         public string Naam { get; set; }
 
@@ -16,6 +16,10 @@ namespace Tattoo_Shop.Models
         [Required]
         public string Foto { get; set; }
 
-        public List<Artist> Artiesten { get; set; }
+        public int ArtistId { get; set; }
+
+        public Artist Artist { get; set; }
+
+        public ICollection<TattooKlant> TattooKlanten { get; set; }
     }
 }

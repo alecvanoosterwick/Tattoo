@@ -7,7 +7,8 @@ namespace Tattoo_Shop.Models
 {
     public class TattooKlant
     {
-        public int TattooKlantId { get; set; }
-        public List<Tattoo> Tattoos { get; set; }
+        public int Id { get; set; }
+        public Tattoo Tattoo { get; set; }
+        public int TattooId { get; set; }
     }
 }

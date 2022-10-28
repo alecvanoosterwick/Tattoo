@@ -38,7 +38,7 @@ namespace Tattoo_Shop.Controllers
         }
         public IActionResult Details(int id)
         {
-            Product product = _context.Products.Where(p => p.ProductId == id).FirstOrDefault();
+            Product product = _context.Products.Where(p => p.Id == id).FirstOrDefault();
             if (product != null)
             {
                 ProductDetailsViewmodel viewModel = new ProductDetailsViewmodel()
