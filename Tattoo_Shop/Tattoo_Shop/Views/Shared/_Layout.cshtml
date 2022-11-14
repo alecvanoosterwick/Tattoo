@@ -11,26 +11,33 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Tattoo_Shop</a>
+                <a class="navbar-brand text-success" asp-area="" asp-controller="Home" asp-action="Index">Aljec</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav justify-content-center flex-grow-1 nav-fill">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark hover-green" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="Index">Shop</a>
+                            <a class="nav-link text-dark hover-green" asp-area="" asp-controller="Shop" asp-action="Index">Shop</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Tattoo" asp-action="Index">Tattoo</a>
+                            <a class="nav-link text-dark hover-green" asp-area="" asp-controller="Tattoo" asp-action="Index">Tattoo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Artist" asp-action="Index">Artist</a>
+                            <a class="nav-link text-dark hover-green" asp-area="" asp-controller="Artist" asp-action="Index">Artist</a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link btn btn-outline-secondary">Login</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link btn btn-outline-secondary">Register</button>
                         </li>
                     </ul>
+                    
                 </div>
             </div>
         </nav>
@@ -43,9 +50,36 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - Tattoo_Shop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row row-cols-4 mt-5 mb-xl-5">
+                    <a class="footer-brand text-black-50 col-3" asp-area="" asp-controller="Home" asp-action="Index">Aljec</a>
+                    <div class="col-3">
+                        <a href="#">face</a>
+                        <a href="#">twitt</a>
+                        <a href="#">insta</a>
+                    </div>
+                    <p class="col-3">© Photo, Inc. 2019. We love our users!</p>
+                    <div class="col-3">
+                            <div class="row">
+                                <div class="col-6">
+                                    <H4>SiteMap</H4>
+                                    <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                    <a asp-area="" asp-controller="Shop" asp-action="Index">Shop</a>
+                                    <a asp-area="" asp-controller="Tattoo" asp-action="Index">Tattoo</a>
+                                    <a asp-area="" asp-controller="Artist" asp-action="Index">Artist</a>
+                                </div>
+                                <div class="col-6">
+                                    <H4>Contacteer ons</H4>
+                                    <p>aljec@hotmail.com</p>
+                                    <p>0566 95 53 59</p>
+                                    <p>2590 Berlaar</p>
+                                </div>
+                            </div>
+                    </div>
+            </div>
         </div>
     </footer>
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
