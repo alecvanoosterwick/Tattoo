@@ -7,14 +7,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Tattoo_Shop.Models;
+using Tattoo_Shop.Areas.Identity.data;
 
 namespace Tattoo_Shop.Data
 {
-    public class TattooContext : IdentityDbContext<IdentityUser>
+    public class TattooContext : IdentityDbContext<CustomUser>
     {
         public TattooContext(DbContextOptions<TattooContext> options) : base(options)
         {
-
+            //pagina 30 deel 1 
         }
         public DbSet<Product> Products { get; set; }
         public DbSet<Artist> Artists { get; set; }

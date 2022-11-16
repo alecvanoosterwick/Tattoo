@@ -10,6 +10,7 @@ namespace Tattoo_Shop.Models
     [Table("Products")]
     public class Product
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -18,11 +19,11 @@ namespace Tattoo_Shop.Models
         public Decimal? Prijs { get; set; }
         [Required]
         public string Foto { get; set; }
-
+        [Required]
         public string Descriptie { get; set; }
-
+        [Required]
         public string Merk { get; set; }
-
+        [Required]
         public ICollection<OrderLijn> Orderlijnen { get;set; }
     }
 }
