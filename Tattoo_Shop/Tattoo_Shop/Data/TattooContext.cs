@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +10,7 @@ using Tattoo_Shop.Models;
 
 namespace Tattoo_Shop.Data
 {
-    public class TattooContext : DbContext
+    public class TattooContext : IdentityDbContext<IdentityUser>
     {
         public TattooContext(DbContextOptions<TattooContext> options) : base(options)
         {
@@ -21,6 +24,8 @@ namespace Tattoo_Shop.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.HasDefaultSchema("Tattoo");
             modelBuilder.Entity<Product>().ToTable("Product").Property(p => p.Prijs).HasColumnType("decimal(18,2)");
             modelBuilder.Entity<Tattoo>().ToTable("Tattoo");

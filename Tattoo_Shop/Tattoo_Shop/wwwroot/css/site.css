@@ -15,6 +15,11 @@ a {
         color: green !important;
     }
 
+img {
+    width: 6000px;
+    height: 5910px;
+}
+
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;

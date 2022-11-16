@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Tattoo_Shop.Models
 {
+    [Table("Products")]
     public class Product
     {
         public int Id { get; set; }
