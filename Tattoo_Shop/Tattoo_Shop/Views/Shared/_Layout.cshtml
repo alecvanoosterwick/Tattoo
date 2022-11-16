@@ -17,6 +17,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    
                     <ul class="navbar-nav justify-content-center flex-grow-1 nav-fill">
                         <li class="nav-item">
                             <a class="nav-link text-dark hover-green" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -30,12 +31,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark hover-green" asp-area="" asp-controller="Artist" asp-action="Index">Artist</a>
                         </li>
-                        <li class="nav-item">
-                            <button class="nav-link btn btn-outline-secondary">Login</button>
-                        </li>
-                        <li class="nav-item">
-                            <button class="nav-link btn btn-outline-secondary">Register</button>
-                        </li>
+                        <partial name="_LoginPartial" />
                     </ul>
 
                 </div>
