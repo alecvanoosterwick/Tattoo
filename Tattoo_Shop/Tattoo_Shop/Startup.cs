@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Tattoo_Shop.Areas.Identity.data;
 using Tattoo_Shop.Data;
 
 namespace Tattoo_Shop
@@ -29,7 +30,9 @@ namespace Tattoo_Shop
             services.AddControllersWithViews();
             services.AddDbContext<TattooContext>(options =>
                                     options.UseSqlServer(Configuration.GetConnectionString("DatabaseConnection")));
-            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<TattooContext>();
+            services.AddDefaultIdentity<CustomUser>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<TattooContext>();
             services.AddRazorPages();
             services.Configure<IdentityOptions>(options =>
             {

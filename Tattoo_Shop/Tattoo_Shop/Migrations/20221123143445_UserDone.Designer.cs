@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tattoo_Shop.Data;
 
 namespace Tattoo_Shop.Migrations
 {
     [DbContext(typeof(TattooContext))]
-    partial class TattooContextModelSnapshot : ModelSnapshot
+    [Migration("20221123143445_UserDone")]
+    partial class UserDone
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

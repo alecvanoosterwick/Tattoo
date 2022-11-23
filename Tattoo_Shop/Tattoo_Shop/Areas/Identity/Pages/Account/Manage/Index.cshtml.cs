@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Tattoo_Shop.Areas.Identity.data;
 
 namespace Tattoo_Shop.Areas.Identity.Pages.Account.Manage
 {
     public partial class IndexModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<CustomUser> _userManager;
+        private readonly SignInManager<CustomUser> _signInManager;
 
         public IndexModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+            UserManager<CustomUser> userManager,
+            SignInManager<CustomUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -34,19 +35,48 @@ namespace Tattoo_Shop.Areas.Identity.Pages.Account.Manage
         {
             [Phone]
             [Display(Name = "Phone number")]
+            [Required]
             public string PhoneNumber { get; set; }
+            [Required]
+            public string VoorNaam { get; set; }
+            [Required]
+            public string Gemeente { get; set; }
+            [Required]
+            public string Postcode { get; set; }
+            [Required]
+            public string Adres { get; set; }
+            [Required]
+            public string AchterNaam { get; set; }
+            [EmailAddress]
+            [Display(Name = "E-mailadres")]
+            public string Email { get; set; }
+            [Required]
+            [DataType(DataType.Password)]
+            public string Password { get; set; }
         }
 
-        private async Task LoadAsync(IdentityUser user)
+        private async Task LoadAsync(CustomUser user)
         {
-            var userName = await _userManager.GetUserNameAsync(user);
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            var voorNaam = await Task.FromResult(user.VoorNaam);
+            var achterNaam = await Task.FromResult(user.AchterNaam);
+            var emailadres = await Task.FromResult(user.Email);
+            var phonenumber = await Task.FromResult(user.PhoneNumber);
+            var password = await Task.FromResult(user.Password);
+            var gemeente = await Task.FromResult(user.Gemeente);
+            var postcode = await Task.FromResult(user.Postcode);
+            var adres = await Task.FromResult(user.Adres);
 
-            Username = userName;
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                VoorNaam = voorNaam,
+                AchterNaam = achterNaam,
+                Email = emailadres,
+                PhoneNumber = phonenumber,
+                Password = password,
+                Gemeente = gemeente,
+                Postcode = postcode,
+                Adres = adres
             };
         }
 
@@ -87,6 +117,15 @@ namespace Tattoo_Shop.Areas.Identity.Pages.Account.Manage
                 }
             }
 
+            user.Email = Input.Email;
+            user.VoorNaam = Input.VoorNaam;
+            user.AchterNaam = Input.AchterNaam;
+            user.Password = Input.Password;
+            user.Gemeente = Input.Gemeente;
+            user.Postcode = Input.Postcode;
+            user.Adres = Input.Adres;
+
+            await _userManager.UpdateAsync(user);
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
             return RedirectToPage();

@@ -21,12 +21,6 @@ namespace Tattoo_Shop.Areas.Identity.data
             public string AchterNaam { get; set; }
             [Required]
             [PersonalData]
-            public string Mail { get; set; }
-            [Required]
-            [PersonalData]
-            public string? TelefoonNummer { get; set; }
-            [Required]
-            [PersonalData]
             public string Gemeente { get; set; }
             [Required]
             [PersonalData]
@@ -35,11 +29,10 @@ namespace Tattoo_Shop.Areas.Identity.data
             [PersonalData]
             public string Adres { get; set; }
             [Required]
-            [PersonalData]
-            public string Wachtwoord { get; set; }
-            [PersonalData]
-            [Required]
-            public bool? Admin { get; set; }
+            [DataType(DataType.Password)]
+            public string Password { get; set; }
+            //[PersonalData]
+            ////public bool? Admin { get; set; }
             [Required]
             public ICollection<Order> Orders { get; set; }
             [Required]

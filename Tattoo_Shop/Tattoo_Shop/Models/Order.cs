@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Tattoo_Shop.Areas.Identity.data;
 
 namespace Tattoo_Shop.Models
 {
@@ -16,10 +17,6 @@ namespace Tattoo_Shop.Models
         public int Id { get; set; }
         [Required]
         public CustomUser CustomUser { get; set; }
-
-        [Required]
-        [ForeignKey("CustomUser")]
-        public int CustomUserId { get; set; }
 
         [Required]
         public ICollection<OrderLijn> Orderlijnen { get; set; }
