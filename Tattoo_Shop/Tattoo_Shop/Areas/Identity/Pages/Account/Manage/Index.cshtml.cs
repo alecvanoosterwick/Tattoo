@@ -50,9 +50,6 @@ namespace Tattoo_Shop.Areas.Identity.Pages.Account.Manage
             [EmailAddress]
             [Display(Name = "E-mailadres")]
             public string Email { get; set; }
-            [Required]
-            [DataType(DataType.Password)]
-            public string Password { get; set; }
         }
 
         private async Task LoadAsync(CustomUser user)
@@ -61,7 +58,6 @@ namespace Tattoo_Shop.Areas.Identity.Pages.Account.Manage
             var achterNaam = await Task.FromResult(user.AchterNaam);
             var emailadres = await Task.FromResult(user.Email);
             var phonenumber = await Task.FromResult(user.PhoneNumber);
-            var password = await Task.FromResult(user.Password);
             var gemeente = await Task.FromResult(user.Gemeente);
             var postcode = await Task.FromResult(user.Postcode);
             var adres = await Task.FromResult(user.Adres);
@@ -73,7 +69,6 @@ namespace Tattoo_Shop.Areas.Identity.Pages.Account.Manage
                 AchterNaam = achterNaam,
                 Email = emailadres,
                 PhoneNumber = phonenumber,
-                Password = password,
                 Gemeente = gemeente,
                 Postcode = postcode,
                 Adres = adres
@@ -120,7 +115,6 @@ namespace Tattoo_Shop.Areas.Identity.Pages.Account.Manage
             user.Email = Input.Email;
             user.VoorNaam = Input.VoorNaam;
             user.AchterNaam = Input.AchterNaam;
-            user.Password = Input.Password;
             user.Gemeente = Input.Gemeente;
             user.Postcode = Input.Postcode;
             user.Adres = Input.Adres;

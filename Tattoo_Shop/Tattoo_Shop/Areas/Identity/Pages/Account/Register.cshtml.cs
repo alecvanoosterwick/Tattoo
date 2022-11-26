@@ -88,7 +88,6 @@ namespace Tattoo_Shop.Areas.Identity.Pages.Account
             {
                 var user = new CustomUser { 
                     UserName = Input.Email, 
-                    Password = Input.Password,
                     Adres = Input.Adres,
                     Email = Input.Email , 
                     Postcode = Input.Postcode, 

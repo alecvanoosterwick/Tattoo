@@ -28,9 +28,6 @@ namespace Tattoo_Shop.Areas.Identity.data
             [Required]
             [PersonalData]
             public string Adres { get; set; }
-            [Required]
-            [DataType(DataType.Password)]
-            public string Password { get; set; }
             //[PersonalData]
             ////public bool? Admin { get; set; }
             [Required]
