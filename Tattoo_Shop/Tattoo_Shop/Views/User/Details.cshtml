@@ -1,0 +1,27 @@
+﻿@model Tattoo_Shop.ViewModels.UserDetailViewmodel
+
+@{ 
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Model.VoorNaam @Model.AchterNaam</h1>
+<p>
+    Id: @Model.Id
+</p>
+<p>
+    Email: @Model.Email
+</p>
+<p>
+    Telefoon nummer: @Model.PhoneNumber
+</p>
+<p>
+    Gemeente: @Model.Gemeente
+</p>
+<p>
+    Postcode: @Model.Postcode
+</p>
+<p>
+    Adres: @Model.Adres
+</p>
+
+@Html.ActionLink("Terug", "Index", "User")

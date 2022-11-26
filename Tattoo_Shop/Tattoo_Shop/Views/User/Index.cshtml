@@ -1,0 +1,79 @@
+﻿@model Tattoo_Shop.ViewModels.UserListViewmodel
+
+@{      
+    ViewData["Title"] = "Index";
+}
+
+<h2>Users</h2>
+<p>
+    <a asp-action="Create">Create new item</a>
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th class="col-md-2">
+                @Html.DisplayNameFor(u => u.Users[0].Id);
+            </th>
+            <th class="col-md-1">
+                @Html.DisplayNameFor(u => u.Users[0].VoorNaam)
+            </th>
+            <th class="col-md-1">
+                @Html.DisplayNameFor(u => u.Users[0].AchterNaam)
+            </th>
+            <th class="col-md-2">
+                @Html.DisplayNameFor(u => u.Users[0].PhoneNumber)
+            </th>
+            <th class="col-md-2">
+                @Html.DisplayNameFor(u => u.Users[0].Email)
+            </th>
+            <th class="col-md-1">
+                @Html.DisplayNameFor(u => u.Users[0].Gemeente)
+            </th>
+            <th class="col-md-1">
+                @Html.DisplayNameFor(u => u.Users[0].Postcode)
+            </th>
+            <th class="col-md-1">
+                @Html.DisplayNameFor(u => u.Users[0].Adres)
+            </th>
+            <th class="col-md-1">
+                &nbsp;
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var user in Model.Users)
+            {
+        <tr>
+            <td class="col-md-2">
+                @Html.DisplayFor(modelItem => user.Id)
+            </td>
+            <td class="col-md-1">
+                @Html.DisplayFor(modelItem => user.VoorNaam)
+            </td>
+            <td class="col-md-1">
+                @Html.DisplayFor(modelItem => user.AchterNaam)
+            </td>
+            <td class="col-md-2">
+                @Html.DisplayFor(modelItem => user.PhoneNumber)
+            </td>
+            <td class="col-md-2">
+                @Html.DisplayFor(modelItem => user.Email)
+            </td>
+            <td class="col-md-1">
+                @Html.DisplayFor(modelItem => user.Gemeente)
+            </td>
+            <td class="col-md-1">
+                @Html.DisplayFor(modelItem => user.Postcode)
+            </td>
+            <td class="col-md-1">
+                @Html.DisplayFor(modelItem => user.Adres)
+            </td>
+            <td class="col-md-1">
+                <a asp-action="Details" asp-route-id="@user.Id">Details</a>
+                <a asp-action="Delete" asp-route-id="@user.Id">Delete</a>
+            </td>
+        </tr>
+            }
+    </tbody>
+</table>
