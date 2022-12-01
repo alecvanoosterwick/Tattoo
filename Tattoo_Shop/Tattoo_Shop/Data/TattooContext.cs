@@ -15,7 +15,7 @@ namespace Tattoo_Shop.Data
     {
         public TattooContext(DbContextOptions<TattooContext> options) : base(options)
         {
-            //pagina 30 deel 1 
+            
         }
         public DbSet<Product> Products { get; set; }
         public DbSet<Artist> Artists { get; set; }

@@ -1,0 +1,2 @@
+select *
+from Tattoo.Product

@@ -55,9 +55,29 @@ namespace Tattoo_Shop
                 options.User.RequireUniqueEmail = false;
             });
         }
+        private async Task CreateRoles(IServiceProvider serviceProvider)
+        {
+            RoleManager<IdentityRole> roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            TattooContext context = serviceProvider.GetRequiredService<TattooContext>();
+
+            IdentityResult result;
+
+            bool roleCheck = await roleManager.RoleExistsAsync("user");
+            if (!roleCheck)
+            {
+                result = await roleManager.CreateAsync(new IdentityRole("user"));
+            }
+
+            roleCheck = await roleManager.RoleExistsAsync("admin");
+            if (!roleCheck)
+            {
+                result = await roleManager.CreateAsync(new IdentityRole("admin"));
+            }
+            context.SaveChanges();
+        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -84,6 +104,7 @@ namespace Tattoo_Shop
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+            CreateRoles(serviceProvider).Wait();
         }
     }
 }

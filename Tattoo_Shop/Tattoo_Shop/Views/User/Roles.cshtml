@@ -1,0 +1,18 @@
+﻿@model Tattoo_Shop.ViewModels.GrantRolesViewModel
+
+@{
+    ViewData["Title"] = "Grant Permission";
+}
+
+<form asp-action="GrantPermissions" asp-method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <select asp-for="UserId" asp-items="Model.Users"></select>
+    </div>
+    <div class="form-group">
+        <select asp-for="RoleId" asp-items="Model.Roles"></select>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Create" />
+    </div>
+</form>

@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +13,18 @@ using Tattoo_Shop.ViewModels;
 
 namespace Tattoo_Shop.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UserController : Controller
     {
         private UserManager<CustomUser> _userManager;
-        public UserController(UserManager<CustomUser> userManager)
+        private RoleManager<IdentityRole> _roleManager;
+        public UserController(UserManager<CustomUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             UserListViewmodel viewModel = new UserListViewmodel()
@@ -25,6 +33,7 @@ namespace Tattoo_Shop.Controllers
             };
             return View(viewModel);
         }
+
         public IActionResult Details(string id)
         {
             CustomUser user = _userManager.Users.Where(u => u.Id == id).FirstOrDefault();
@@ -86,26 +95,86 @@ namespace Tattoo_Shop.Controllers
             }
             return View(viewModel);
         }
-        public IActionResult Delete()
+        public async Task<IActionResult> Delete(string id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            CustomUser user = await _userManager.Users.FirstOrDefaultAsync(u => u.Id == id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            DeleteUserViewModel viewModel = new DeleteUserViewModel()
+            {
+                Id = user.Id,
+                VoorNaam = user.VoorNaam,
+                AchterNaam = user.AchterNaam
+            };
+            return View(viewModel);
         }
-        [HttpPost]
-        public async Task<IActionResult>Delete(string id)
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             CustomUser user = await _userManager.FindByIdAsync(id);
-                if(user != null)
+            if (user != null)
+            {
+                IdentityResult result = await _userManager.DeleteAsync(user);
+                if (result.Succeeded)
                 {
-                    IdentityResult result = await _userManager.DeleteAsync(user);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    foreach (IdentityError error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "User Not Found");
+            }
+            return View("Index", _userManager.Users.ToList());
+        }
+
+
+        public IActionResult GrantPermissions()
+        {
+            GrantRolesViewModel viewModel = new GrantRolesViewModel()
+            {
+                Users = new SelectList(_userManager.Users.ToList(), "Id", "UserName"),
+                Roles = new SelectList(_roleManager.Roles.ToList(), "Id", "Name")
+            };
+            return View(viewModel);
+        }
+        public async Task<IActionResult> GrantPermissions(GrantRolesViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                CustomUser user = await _userManager.FindByIdAsync(viewModel.UserId);
+                IdentityRole role = await _roleManager.FindByIdAsync(viewModel.RoleId);
+                if (user != null && role != null)
+                {
+                    IdentityResult result = await _userManager.AddToRoleAsync(user, role.Name);
                     if (result.Succeeded)
                         return RedirectToAction("Index");
                     else
+                    {
                         foreach (IdentityError error in result.Errors)
                             ModelState.AddModelError("", error.Description);
+                    }
                 }
                 else
-                    ModelState.AddModelError("", "User Not Found");
-                return View("Index", _userManager.Users.ToList());
+                    ModelState.AddModelError("", "User or role Not found");
+            }
+            return (View(viewModel));
         }
     }
 }
