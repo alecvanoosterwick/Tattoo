@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Tattoo_Shop.Data;
 using Tattoo_Shop.Models;
 using Tattoo_Shop.ViewModels;
 
@@ -10,19 +11,21 @@ namespace Tattoo_Shop.Controllers
 {
     public class ArtistController : Controller
     {
+        private readonly TattooContext _context;
+
+        public ArtistController(TattooContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
-            
-            return View();
+            ArtistListViewModel viewModel = new ArtistListViewModel();
+            viewModel.Artists = _context.Artists.ToList();
+            return View(viewModel);
         }
         public IActionResult List()
         {
-            //List<Artist> artists = new List<Artist>();
-            //artists.Add(new Artist() { ArtistId = 1, Voornaam = "alec", Achternaam = "van oosterwijck", Descriptie = "gespecialiseerd in niets", Specialiteiten = "none", Foto = "mikey.jpg" });
-
-            //ArtistListViewModel viewModel = new ArtistListViewModel();
-            //viewModel.Artists = artists;
-            return View(/*viewModel*/);
+            return View();
         }
     }
 }

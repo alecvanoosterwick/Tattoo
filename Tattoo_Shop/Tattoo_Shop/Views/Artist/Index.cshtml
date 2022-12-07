@@ -1,9 +1,23 @@
-﻿
+﻿@model Tattoo_Shop.ViewModels.ArtistListViewModel
 @{
     ViewData["Title"] = "Artist Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@foreach (var item in Model.Artists)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col">
+               
+            </div>
+            <div class="col m-5">
+                @item.Voornaam
+                <br/>
+                @item.Descriptie
+                <br/>
+                Specialiteit: @item.Specialiteiten
+                <br/>
+                <button>Contacteer nu</button>
+            </div>
+        </div>
+    </div>
+}

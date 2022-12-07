@@ -36,7 +36,7 @@ namespace Tattoo_Shop.Controllers
             }
             return View("Index", viewModel);
         }
-        public IActionResult Details(int id)
+        public IActionResult Detail(int id)
         {
             Product product = _context.Products.Where(p => p.Id == id).FirstOrDefault();
             if (product != null)

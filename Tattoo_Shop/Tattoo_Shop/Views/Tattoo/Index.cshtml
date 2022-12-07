@@ -1,7 +1,46 @@
-﻿@{
+﻿@model Tattoo_Shop.ViewModels.TattooListViewModel
+@{
     ViewData["Title"] = "Tattoo Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome ViewData["Title"]</h1>
+    <h1 class="display-4">Welcome</h1>
 </div>
+<form asp-controller="Tattoo" asp-action="Search" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Zoek op product:
+            <input asp-for="TattooSearch" />
+            <input type="submit" value="Zoeken" class="btn btn-default" />
+            <a asp-controller="Tattoo" asp-action="Index">Terug naar de volledige lijst</a>
+        </p>
+    </div>
+</form>
+<table>
+    <tbody>
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.Tattoo)
+                {<div class="card col-md-4" style="width: 18rem;">
+                        @*<img src="@item.Foto" class="card-img-top" alt="...">*@
+                     <div class="card-body">
+                         <p class="card-text">@item.Naam</p>
+                         <p>
+                             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#@item.Naam" aria-expanded="false" aria-controls="@item.Naam">
+                                 Button with data-target
+                             </button>
+                         </p>
+                         <div class="collapse" id="@item.Naam">
+                             <div class="card card-body">
+                               @item.Descriptie
+                             </div>
+                         </div>
+                     </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </tbody>
+</table>
+
+

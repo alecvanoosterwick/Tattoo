@@ -19,6 +19,9 @@ img {
     width: 6000px;
     height: 5910px;
 }
+#more {
+    display: none;
+}
 
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
