@@ -22,7 +22,8 @@ namespace Tattoo_Shop.Models
         public string? Descriptie { get; set; }
         [Required]
         public string? Specialiteiten { get; set; }
-
+        [Required]
+        public string? Email { get; set; }
         [Required]
         public string Foto { get; set; }
         [Required]

@@ -24,16 +24,19 @@
                 {<div class="card col-md-4" style="width: 18rem;">
                         @*<img src="@item.Foto" class="card-img-top" alt="...">*@
                      <div class="card-body">
-                         <p class="card-text">@item.Naam</p>
+                         <h2 class="card-text">@item.Naam</h2>
                          <p>
-                             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#@item.Naam" aria-expanded="false" aria-controls="@item.Naam">
-                                 Button with data-target
+                             <button class="btn btn-outline-success" type="button" data-toggle="collapse" data-target="#@item.Naam" aria-expanded="false" aria-controls="@item.Naam">
+                                 Description
                              </button>
                          </p>
                          <div class="collapse" id="@item.Naam">
                              <div class="card card-body">
-                               @item.Descriptie
+                                 <p>@item.Descriptie</p>
                              </div>
+                         </div>
+                         <div>
+                             <b class="mt-2 mb-2">Tattoo Artist : @item.Artist.Voornaam</b>
                          </div>
                      </div>
                     </div>

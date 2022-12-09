@@ -4,59 +4,38 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4 mt-2 mb-2">Shop</h1>
 </div>
 <form asp-controller="Shop" asp-action="Search" method="get">
-    <div class="form-actions no-color">
+    <div class="form-actions no-color align-self-center">
         <p>
             Zoek op product:
             <input asp-for="ProductSearch" />
             <input type="submit" value="Zoeken" class="btn btn-default" />
-            <a asp-controller="Shop" asp-action="Index">Terug naar de volledige lijst</a>
+            <a asp-controller="Shop" asp-action="Index">Volledige lijst</a>
         </p>
     </div>
 </form>
-@*<table>
-    <tbody>
-        @foreach (var item in Model.Products)
-        {
-        <tr>
-            <td class="col-md-4">
-                @item.Naam
-            </td>
-            <td class="col-md-4">
-                @item.Prijs
-            </td>
-            <td class="col-md-4">
-                <a asp-controller="Shop" asp-action="Detail" asp-route-id="@item.Id">details</a>
-            </td>
-            <td class="col-md-4">
-                edit
-            </td>
-            <td class="col-md-4">
-                delete
-            </td>
-        </tr>
-        }
-    </tbody>
-
-</table>*@
 <table>
     <tbody>
         <div class="container">
             <div class="row">
                 @foreach (var item in Model.Products)
                 {<div class="card col-md-4" style="width: 18rem;">
-                        @*<img src="@item.Foto" class="card-img-top" alt="...">*@
-                     <div class="card-body">
-                         <b class="card-text">@item.Naam</b>
-                         <p class="card-text">@item.Descriptie</p>
-                         <p class="card-text">@item.Merk</p>
-                         <p class="card-text">@item.Prijs</p>
+                     <div class="card-body p-2">
+                         <H2 class="card-text text-center mb-1 mt-1">@item.Naam</H2>
+                         @*<img src="@item.Foto" class="card-img-top" alt="...">*@
+                         <div class="card card-body">
+                             @item.Descriptie
+                         </div>
+                         <div class="text-center mt-2 mb-2">
+                             Prijs : @item.Prijs
+                         </div>
+                         <button type="button" class="btn btn-outline-success btn-lg btn-block">Kopen</button>
                      </div>
-                    </div>
-                }
-            </div>
+                </div>
+                 }
+           </div>
         </div>
     </tbody>
 </table>

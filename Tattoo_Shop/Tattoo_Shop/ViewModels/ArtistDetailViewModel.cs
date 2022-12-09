@@ -17,6 +17,8 @@ namespace Tattoo_Shop.ViewModels
         
         public string Specialiteiten { get; set; }
 
+        public string Email { get; set; }
+
         public string Foto { get; set; }
     }
 }

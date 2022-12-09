@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,18 +22,18 @@ namespace Tattoo_Shop.Controllers
         public IActionResult Index()
         {
             TattooListViewModel viewModel = new TattooListViewModel();
-            viewModel.Tattoo = _context.Tattoos.ToList();
+            viewModel.Tattoo = _context.Tattoos.Include(t => t.Artist).ToList();
             return View(viewModel);
         }
         public IActionResult Search(TattooListViewModel viewModel)
         {
             if (!string.IsNullOrEmpty(viewModel.TattooSearch))
             {
-                viewModel.Tattoo = _context.Tattoos.Where(p => p.Naam.Contains(viewModel.TattooSearch)).ToList();
+                viewModel.Tattoo = _context.Tattoos.Where(p => p.Naam.Contains(viewModel.TattooSearch)).Include(t => t.Artist).ToList();
             }
             else
             {
-                viewModel.Tattoo = _context.Tattoos.ToList();
+                viewModel.Tattoo = _context.Tattoos.Include(t => t.Artist).ToList();
             }
             return View("Index", viewModel);
         }
