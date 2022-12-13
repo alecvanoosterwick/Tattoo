@@ -12,6 +12,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Tattoo_Shop.Areas.Identity.data;
 using Tattoo_Shop.Data;
+using Tattoo_Shop.Data.Repository;
+using Tattoo_Shop.Data.UnitOfWork;
+using Tattoo_Shop.Models;
 
 namespace Tattoo_Shop
 {
@@ -34,6 +37,8 @@ namespace Tattoo_Shop
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<TattooContext>();
             services.AddRazorPages();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IGenericRepository<Order>, GenericRepository<Order>>();
             services.Configure<IdentityOptions>(options =>
             {
                 //password settings

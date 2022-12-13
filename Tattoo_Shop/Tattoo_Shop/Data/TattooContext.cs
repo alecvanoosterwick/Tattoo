@@ -20,6 +20,7 @@ namespace Tattoo_Shop.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Artist> Artists { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderLijn> OrderLijns { get; set; }
         public DbSet<Tattoo> Tattoos { get; set; }
         public DbSet<Artist> Artiesten { get; set; }
 
@@ -28,10 +29,10 @@ namespace Tattoo_Shop.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.HasDefaultSchema("Tattoo");
+            modelBuilder.Entity<Order>().ToTable("Order").Property(b => b.Prijs).HasColumnType("decimal(18,2)");
             modelBuilder.Entity<Product>().ToTable("Product").Property(p => p.Prijs).HasColumnType("decimal(18,2)");
             modelBuilder.Entity<Tattoo>().ToTable("Tattoo");
             modelBuilder.Entity<Artist>().ToTable("Artist");
-            modelBuilder.Entity<OrderLijn>().ToTable("OrderLijn");
             modelBuilder.Entity<TattooKlant>().ToTable("TattooKlant");
             modelBuilder.Entity<OrderLijn>()
                 .HasOne<Product>(ol => ol.Product)

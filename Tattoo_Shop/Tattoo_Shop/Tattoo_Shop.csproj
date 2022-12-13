@@ -9,6 +9,8 @@
     <Compile Remove="Migrations\20221027111319_AddProdcuts.Designer.cs" />
     <Compile Remove="Migrations\20221028113948_Migrations5.cs" />
     <Compile Remove="Migrations\20221028113948_Migrations5.Designer.cs" />
+    <Compile Remove="Migrations\20221213134048_crud.cs" />
+    <Compile Remove="Migrations\20221213134048_crud.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

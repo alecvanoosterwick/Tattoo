@@ -15,6 +15,8 @@ namespace Tattoo_Shop.Models
         [Key]
         [Required]
         public int Id { get; set; }
+        public string Product { get; set; }
+        public Decimal Prijs { get; set; }
         [Required]
         public CustomUser CustomUser { get; set; }
 
