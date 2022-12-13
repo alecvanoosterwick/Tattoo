@@ -4,7 +4,7 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">Tattoos</h1>
 </div>
 <form asp-controller="Tattoo" asp-action="Search" method="get">
     <div class="form-actions no-color">
@@ -12,7 +12,7 @@
             Zoek op product:
             <input asp-for="TattooSearch" />
             <input type="submit" value="Zoeken" class="btn btn-default" />
-            <a asp-controller="Tattoo" asp-action="Index">Terug naar de volledige lijst</a>
+            <a asp-controller="Tattoo" asp-action="Index">volledige lijst</a>
         </p>
     </div>
 </form>
@@ -22,11 +22,11 @@
             <div class="row">
                 @foreach (var item in Model.Tattoo)
                 {<div class="card col-md-4" style="width: 18rem;">
-                        @*<img src="@item.Foto" class="card-img-top" alt="...">*@
                      <div class="card-body">
-                         <h2 class="card-text">@item.Naam</h2>
+                         <h2 class="card-text text-center mb-1 mt-1">@item.Naam</h2>
+                         <img src="~/img/Tattoos/@item.Foto" class="img-thumbnail img-fluid m-2">
                          <p>
-                             <button class="btn btn-outline-success" type="button" data-toggle="collapse" data-target="#@item.Naam" aria-expanded="false" aria-controls="@item.Naam">
+                             <button class="btn btn-outline-success btn-lg btn-block m-2" type="button" data-toggle="collapse" data-target="#@item.Naam" aria-expanded="false" aria-controls="@item.Naam">
                                  Description
                              </button>
                          </p>
@@ -36,7 +36,7 @@
                              </div>
                          </div>
                          <div>
-                             <b class="mt-2 mb-2">Tattoo Artist : @item.Artist.Voornaam</b>
+                             <h4 class="text-center mb-1 mt-1">Tattoo Artist : @item.Artist.Voornaam</h4>
                          </div>
                      </div>
                     </div>
