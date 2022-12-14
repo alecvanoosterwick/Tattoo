@@ -7,7 +7,7 @@ using Tattoo_Shop.Models;
 
 namespace Tattoo_Shop.Data.UnitOfWork
 {
-    interface IUnitOfWork
+    public interface IUnitOfWork
     {
         IGenericRepository<Order> OrderRepository { get; }
         Task Save();

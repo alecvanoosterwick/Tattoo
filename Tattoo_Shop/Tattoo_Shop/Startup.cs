@@ -37,6 +37,7 @@ namespace Tattoo_Shop
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<TattooContext>();
             services.AddRazorPages();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IGenericRepository<Order>, GenericRepository<Order>>();
             services.Configure<IdentityOptions>(options =>
