@@ -28,8 +28,8 @@ namespace Tattoo_Shop.Areas.Identity.data
             [Required]
             [PersonalData]
             public string Adres { get; set; }
-            //[PersonalData]
-            ////public bool? Admin { get; set; }
+            [PersonalData]
+            //public bool? Admin { get; set; }
             [Required]
             public ICollection<Order> Orders { get; set; }
             [Required]

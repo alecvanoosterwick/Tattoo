@@ -1,5 +1,49 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Tattoo_Shop.ViewModels.ArtistListViewModel
 @{
+    ViewData["Title"] = "Artist Admin Page";
 }
+<body>
+    <div class="container-xl">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <h2>Admin <b>Management</b></h2>
+                        </div>
+                        <div class="col-sm-7">
+                            <a asp-action="Create" class="btn btn-secondary"><span>Add New Admin</span></a>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Artist</th>
+                            <th>Descriptie</th>
+                            <th>Specialiteiten</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Artists)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td><img src="~/img/Artists/@item.Foto" style="width:150px; height:auto" alt="Avatar"><p>@item.Voornaam @item.Achternaam</p></td>
+                                <td>@item.Descriptie</td>
+                                <td>@item.Specialiteiten</td>
+                                <td>@item.Email</td>
+                                <td>
+                                    <a class="btn" asp-action="Edit" asp-route-id="@item.Id" title="Edit">Edit</a>
+                                    <a class="btn" asp-action="Delete" asp-route-id="@item.Id" title="Delete">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+

@@ -22,7 +22,6 @@ namespace Tattoo_Shop.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderLijn> OrderLijns { get; set; }
         public DbSet<Tattoo> Tattoos { get; set; }
-        public DbSet<Artist> Artiesten { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -44,11 +43,11 @@ namespace Tattoo_Shop.Data
                 .WithMany(o => o.Orderlijnen)
                 .HasForeignKey(ol => ol.OrderId)
                 .IsRequired();
-            //modelBuilder.Entity<TattooKlant>()
-            //    .HasOne<Klant>(tk => tk.Klant)
-            //    .WithMany(p => p.Orderlijnen)
-            //    .HasForeignKey(tk => tk.klantId)
-            //    .IsRequired();
+            modelBuilder.Entity<TattooKlant>()
+                .HasOne<CustomUser>(tk => tk.CustomUser)
+                .WithMany(p => p.TattooKlanten)
+                .HasForeignKey(tk => tk.CustomUserId)
+                .IsRequired();
             modelBuilder.Entity<TattooKlant>()
                 .HasOne<Tattoo>(tk => tk.Tattoo)
                 .WithMany(t => t.TattooKlanten)

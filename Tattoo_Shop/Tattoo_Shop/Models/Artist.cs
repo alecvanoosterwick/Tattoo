@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Tattoo_Shop.Models
 {
     [Table("Artists")]
-    // authorize P21 identity , voor paginas te beveiligen met in te loggen.
     public class Artist
     {
         [Required]
@@ -19,11 +15,11 @@ namespace Tattoo_Shop.Models
         [Required]
         public string Achternaam { get; set; }
         [Required]
-        public string? Descriptie { get; set; }
+        public string Descriptie { get; set; }
         [Required]
-        public string? Specialiteiten { get; set; }
+        public string Specialiteiten { get; set; }
         [Required]
-        public string? Email { get; set; }
+        public string Email { get; set; }
         [Required]
         public string Foto { get; set; }
         [Required]

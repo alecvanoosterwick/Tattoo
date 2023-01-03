@@ -21,5 +21,7 @@ namespace Tattoo_Shop.Models
         public int TattooId { get; set; }
         [Required]
         public CustomUser CustomUser { get; set; }
+        [ForeignKey("CustomUser")]
+        public string? CustomUserId { get; set; }
     }
 }

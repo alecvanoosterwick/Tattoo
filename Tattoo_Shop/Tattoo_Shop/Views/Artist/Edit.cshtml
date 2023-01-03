@@ -1,0 +1,59 @@
+﻿@model Tattoo_Shop.ViewModels.Edit.EditArtistViewModel
+
+@{
+    ViewData["Title"] = "Edit artist Page";
+}
+<h1>Edit Artist</h1>
+
+<form class="row g-3" asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    <div class="row mt-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Voornaam" class="form-label">Voornaam</label>
+                <input asp-for="Voornaam" class="form-control">
+                <span asp-validation-for="Voornaam" class="text-danger" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Achternaam" class="form-label">Achternaam</label>
+                <input asp-for="Achternaam" class="form-control">
+                <span asp-validation-for="Achternaam" class="text-danger" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input type="email" asp-for="Email" class="form-control">
+                <span asp-validation-for="Email" class="text-danger" />
+            </div>
+        </div>
+        <div class="col-12">
+            <label asp-for="Descriptie" class="form-label">Descriptie</label>
+            <input asp-for="Descriptie" class="form-control">
+            <span asp-validation-for="Descriptie" class="text-danger" />
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Specialiteiten" class="form-label">Specialiteiten</label>
+            <input asp-for="Specialiteiten" class="form-control">
+            <span asp-validation-for="Specialiteiten" class="text-danger" />
+        </div>
+        <div class="col-md-4">
+            <label asp-for="Foto" class="form-label">Foto</label>
+            <input asp-for="Foto" class="form-control">
+            <span asp-validation-for="Foto" class="text-danger" />
+        </div>
+        <div class="col-12">
+            <input type="submit" class="btn btn-primary" value="Update Admin" />
+            <span asp-validation-for="Descriptie" class="text-danger" />
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
