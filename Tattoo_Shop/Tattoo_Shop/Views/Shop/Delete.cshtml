@@ -1,0 +1,12 @@
+﻿@model Tattoo_Shop.ViewModels.Delete.DeleteShopViewModel
+
+@{
+    ViewData["Title"] = "Delete artist Page";
+}
+<h1>Delete Product</h1>
+
+<h4>Wilt u @Model.Naam met id @Model.Id gemaakt door @Model.Merk verwijderen?</h4>
+<form asp-action="Delete">
+    <input type="hidden" asp-route-id="@Model.Id" />
+    <input type="submit" value="Vewijder" class="btn" />
+</form>

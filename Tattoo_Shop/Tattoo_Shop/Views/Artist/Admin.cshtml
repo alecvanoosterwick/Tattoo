@@ -36,8 +36,8 @@
                                 <td>@item.Specialiteiten</td>
                                 <td>@item.Email</td>
                                 <td>
-                                    <a class="btn" asp-action="Edit" asp-route-id="@item.Id" title="Edit">Edit</a>
-                                    <a class="btn" asp-action="Delete" asp-route-id="@item.Id" title="Delete">Delete</a>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn"><span>Edit</span></a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn"><span>Delete</span></a>
                                 </td>
                             </tr>
                         }

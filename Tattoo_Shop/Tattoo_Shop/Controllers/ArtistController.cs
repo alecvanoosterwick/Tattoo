@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ namespace Tattoo_Shop.Controllers
             };
             return View(viewModel);
         }
+        [Authorize(Roles = "Admin")]
         public IActionResult Admin()
         {
             ArtistListViewModel viewModel = new ArtistListViewModel()
@@ -37,6 +39,7 @@ namespace Tattoo_Shop.Controllers
             };
             return View(viewModel);
         }
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -45,10 +48,9 @@ namespace Tattoo_Shop.Controllers
         {
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public async Task<IActionResult> Create(CreateArtistViewmodel vm)
         {
             if (ModelState.IsValid)
@@ -69,6 +71,7 @@ namespace Tattoo_Shop.Controllers
 
             return View(vm);
         }
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -89,6 +92,7 @@ namespace Tattoo_Shop.Controllers
             };
             return View("Delete",artist);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteDelete(int? id)
@@ -107,7 +111,7 @@ namespace Tattoo_Shop.Controllers
             }
             return View("Index", _context.Artists.ToList());
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Edit(int? id)
         {
@@ -135,6 +139,7 @@ namespace Tattoo_Shop.Controllers
 
             return View(vm);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, EditArtistViewModel vm)
@@ -161,7 +166,7 @@ namespace Tattoo_Shop.Controllers
                     _context.Update(a);
                     await _context.SaveChangesAsync();
                 }
-                catch(DbUpdateConcurrencyException e) 
+                catch(DbUpdateConcurrencyException a) 
                 {
                     if (! _context.Artists.Any(a =>a.Id == vm.Id ))
                     {

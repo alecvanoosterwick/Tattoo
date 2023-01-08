@@ -1,0 +1,45 @@
+﻿@model Tattoo_Shop.ViewModels.Edit.EditTattooViewModel
+
+@{
+    ViewData["Title"] = "Edit Tattoo Page";
+}
+<h1>Edit Tattoo</h1>
+
+<form class="row g-3" asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    <div class="row mt-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Naam" class="form-label">Naam</label>
+                <input asp-for="Naam" class="form-control">
+                <span asp-validation-for="Naam" class="text-danger" />
+            </div>
+        </div>
+        <div class="col-12">
+            <label asp-for="Descriptie" class="form-label">Descriptie</label>
+            <input asp-for="Descriptie" class="form-control">
+            <span asp-validation-for="Descriptie" class="text-danger" />
+        </div>
+        <div class="col-md-4">
+            <label asp-for="Foto" class="form-label">Foto</label>
+            <input asp-for="Foto" class="form-control">
+            <span asp-validation-for="Foto" class="text-danger" />
+        </div>
+        <div class="col-md-4">
+            <label asp-for="ArtistId" class="form-label">ArtistId</label>
+            <input asp-for="ArtistId" class="form-control">
+            <span asp-validation-for="ArtistId" class="text-danger" />
+        </div>
+        <div class="col-12">
+            <input type="submit" class="btn btn-primary" value="Update Tattoo" />
+            <span asp-validation-for="Descriptie" class="text-danger" />
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

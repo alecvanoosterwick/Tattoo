@@ -1,5 +1,47 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Tattoo_Shop.ViewModels.TattooListViewModel
 @{
+    ViewData["Title"] = "Tattoo Admin Page";
 }
+<body>
+    <div class="container-xl">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <h2>Tattoos<b>Management</b></h2>
+                        </div>
+                        <div class="col-sm-7">
+                            <a asp-action="Create" class="btn btn-secondary"><span>Add New Tattoo</span></a>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Tattoo</th>
+                            <th>Descriptie</th>
+                            <th>ArtistId</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Tattoo)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td><img src="~/img/Tattoos/@item.Foto" style="width:150px; height:auto" alt="Avatar"><p>@item.Naam</p></td>
+                                <td>@item.Descriptie</td>
+                                <td>@item.ArtistId</td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary"><span>Edit</span></a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary"><span>Delete</span></a>
+                                </td>
+                            </tr>
+                        }
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+

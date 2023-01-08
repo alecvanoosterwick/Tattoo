@@ -1,0 +1,56 @@
+﻿@model Tattoo_Shop.ViewModels.Create.CreateShopViewModel
+@{
+    ViewData["Title"] = "Product Create Page";
+}
+
+<h1>New Product</h1>
+
+<h4>Create a new Product</h4>
+
+<form class="row g-3" asp-action="Create">
+    <div class="row mt-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Naam" class="form-label">Naam</label>
+                <input asp-for="Naam" class="form-control">
+                <span asp-validation-for="Naam" class="text-danger" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Descriptie" class="form-label">Descriptie</label>
+                <input asp-for="Descriptie" class="form-control">
+                <span asp-validation-for="Descriptie" class="text-danger" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Merk" class="form-label">Merk</label>
+                <input asp-for="Merk" class="form-control">
+                <span asp-validation-for="Merk" class="text-danger" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label asp-for="Foto" class="form-label">Foto</label>
+            <input asp-for="Foto" class="form-control" disabled>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Prijs" class="form-label">Prijs</label>
+                <input asp-for="Prijs" class="form-control">
+                <span asp-validation-for="Prijs" class="text-danger" />
+            </div>
+        </div>
+        <div class="col-12">
+            <input type="submit" class="btn btn-primary" value="Add Product" />
+            <span asp-validation-for="Descriptie" class="text-danger" />
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
